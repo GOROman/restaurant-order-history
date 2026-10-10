@@ -18,3 +18,5 @@ test('quantity and unit price form the total; unapproved fields are omitted',()=
   assert.deepEqual(row,{name:'検証',quantity:2,price:500});assert.equal(sum([row]),1000);
   assert.throws(()=>item({name:' ',quantity:1,price:100}));
 });
+
+test('confirmed inclusive total splits into five without adding tax',()=>{assert.deepEqual(split(13750,5),{base:2750,remainder:0,people:5});});
