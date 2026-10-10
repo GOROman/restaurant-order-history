@@ -4,17 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#176956">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; connect-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>食事の記録</title>
   <meta name="description" content="食事のひとときを写真で振り返る、シンプルなアルバム。">
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
 </head>
 <body>
   <main>
-    <header><span class="brand">食事の記録</span><span class="pill">PHOTO ALBUM</span></header>
-    <section class="intro"><p class="eyebrow">AT THE TABLE</p><h1>おいしい時間を、<br>写真に残す。</h1><p>食卓のひとときを振り返る、小さなアルバム。</p></section>
+    <header><span class="brand">食事の記録</span><span class="pill">注文履歴・割り勘</span></header>
+    <section class="intro"><p class="eyebrow">AT THE TABLE</p><h1>おいしい時間を、<br>写真に残す。</h1><p>写真と注文の記録。みんなの負担も、わかりやすく。</p></section>
+    <section class="bill" aria-label="合計と割り勘"><div class="bill-top"><div><span>入力した合計</span><strong id="total">￥0</strong></div><label for="people">割り勘の人数<input id="people" type="number" inputmode="numeric" min="1" max="100" step="1" value="5">名</label></div><div class="split"><span>1人あたりの基本額</span><strong id="per-person">￥0</strong><p id="split-note"></p><p id="split-error" role="alert"></p></div></section>
+    <section class="orders"><h2>注文履歴</h2><p class="hint">実際の注文内容・価格は未取得です。手元の明細を見て記録できます。</p><div id="records"></div><p id="empty" class="empty">まだ記録はありません。</p><form id="entry" novalidate><label for="name">品名<input id="name" maxlength="80" placeholder="明細の品名" autocomplete="off" required></label><div class="entry-numbers"><label for="quantity">数量<input id="quantity" type="number" inputmode="numeric" min="1" max="999" step="1" value="1" required></label><label for="price">単価（円）<input id="price" type="number" inputmode="numeric" min="0" max="1000000" step="1" placeholder="0" required></label></div><button class="primary" type="submit">記録に追加</button><p id="status" role="status" aria-live="polite"></p></form><p class="hint">記録はこのブラウザー内に保存します。外部には送信しません。税・サービス料は自動計算しません。実際のお会計はお店の明細をご確認ください。</p></section>
     <section class="gallery" aria-label="食事の写真"><div class="section-title"><h2>食事のアルバム</h2><span class="pill">3枚の写真</span></div><p>写真をタップすると、大きく表示できます。</p><div class="photo-grid"><a href="photos/meal-1.jpg" target="_blank" rel="noopener"><img src="photos/meal-1.jpg" alt="白い皿に盛られた肉ときゅうり、レタスの写真" width="675" height="1200"><span>食事の写真 01 ↗</span></a><a href="photos/meal-2.jpg" target="_blank" rel="noopener"><img src="photos/meal-2.jpg" alt="唐辛子や緑の野菜が添えられた揚げたポテトの写真" width="1200" height="675"><span>食事の写真 02 ↗</span></a><a href="photos/meal-3.jpg" target="_blank" rel="noopener"><img src="photos/meal-3.jpg" alt="焼き目のついた餃子のアップ写真" width="1200" height="675"><span>食事の写真 03 ↗</span></a></div></section>
-    <footer>食事の写真のみを掲載しています。</footer>
+    <footer>Airレジとの連携・自動同期はありません。</footer>
   </main>
 </body>
 </html>
